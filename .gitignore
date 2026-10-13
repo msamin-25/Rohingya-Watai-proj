@@ -1,0 +1,35 @@
+# --- Secrets: never commit ---
+.env
+.env.*
+!.env.example
+
+# --- Private voice data: never commit ---
+var/
+recordings/
+*.wav
+*.m4a
+*.mp3
+*.ogg
+*.webm
+*.aiff
+*.zip
+
+# --- Python ---
+.venv
+.venv.nosync/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+
+# --- Node ---
+node_modules/
+e2e/test-results/
+e2e/playwright-report/
+
+# --- OS / editor ---
+.DS_Store
+.idea/
