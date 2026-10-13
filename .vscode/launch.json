@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend: uvicorn",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.main:factory", "--factory", "--port", "8000"],
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "preLaunchTask": "build frontend",
+      "justMyCode": true,
+      "jinja": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Eval matcher (pick folder)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "rvb_ai.eval_matcher",
+      "args": ["${input:recordingsFolder}"],
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "recordingsFolder",
+      "type": "promptString",
+      "description": "Unzipped export folder (contains manifest.json)",
+      "default": "~/rvb-eval/recordings"
+    }
+  ]
+}

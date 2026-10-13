@@ -1,0 +1,17 @@
+{
+  "name": "rvb-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rohingya Voice Interpreter web app (vanilla JS, bundled into one HTML file).",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rvb-ai"
+version = "0.1.0"
+description = "Rohingya Voice Interpreter ML core: MFCC features, DTW phrase matcher, safety gate, evaluation CLI."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.26"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+# Reserved for a future, opt-in English-only text helper. Intentionally empty in the MVP:
+# no audio or text is ever sent to an external model.
+llm = []
+
+[project.scripts]
+rvb-eval = "rvb_ai.eval_matcher:main"
+
+[tool.setuptools.packages.find]
+include = ["rvb_ai*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

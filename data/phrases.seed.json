@@ -1,0 +1,23 @@
+{
+  "format": "rvb-phrases/1",
+  "note": "English only. Rohingya is taught by voice in the app; nothing here is a Rohingya word or spelling.",
+  "phrases": [
+    { "id": "hello", "english": "Hello.", "category": "general" },
+    { "id": "thank_you", "english": "Thank you.", "category": "general" },
+    { "id": "yes", "english": "Yes.", "category": "general" },
+    { "id": "no", "english": "No.", "category": "general" },
+    { "id": "dont_understand", "english": "I don't understand.", "category": "general" },
+    { "id": "speak_slowly", "english": "Please speak slowly.", "category": "general" },
+    { "id": "need_interpreter", "english": "I need an interpreter.", "category": "general" },
+    { "id": "where_washroom", "english": "Where is the washroom?", "category": "general" },
+    { "id": "need_water", "english": "I need water.", "category": "general" },
+    { "id": "hungry", "english": "I am hungry.", "category": "general" },
+    { "id": "need_doctor", "english": "I need a doctor.", "category": "health" },
+    { "id": "in_pain", "english": "I am in pain.", "category": "health" },
+    { "id": "feel_sick", "english": "I feel sick.", "category": "health" },
+    { "id": "need_lawyer", "english": "I need a lawyer.", "category": "legal" },
+    { "id": "immigration_papers", "english": "I need help with my immigration papers.", "category": "legal" },
+    { "id": "call_ambulance", "english": "Please call an ambulance.", "category": "emergency" },
+    { "id": "in_danger", "english": "I am in danger.", "category": "emergency" }
+  ]
+}

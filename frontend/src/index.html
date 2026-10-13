@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Rohingya Voice Interpreter</title>
+    <style>/*STYLE*/</style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">◉</span>
+        <div>
+          <h1>Rohingya Voice Interpreter</h1>
+          <p class="sub">Speak Rohingya → English text and speech</p>
+        </div>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Sections">
+        <button role="tab" id="tab-speak" aria-controls="view-speak" aria-selected="true">🎙️ Speak</button>
+        <button role="tab" id="tab-teach" aria-controls="view-teach" aria-selected="false">🧑‍🏫 Teach</button>
+        <button role="tab" id="tab-tests" aria-controls="view-tests" aria-selected="false">🧪 Phrases &amp; tests</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- SPEAK: for the newcomer. No reading or writing Rohingya; just press and speak. -->
+      <section id="view-speak" role="tabpanel" aria-labelledby="tab-speak" class="view">
+        <button id="mic" class="mic" aria-label="Tap to speak">
+          <span class="mic-icon" aria-hidden="true">🎙️</span>
+          <span class="mic-label">Tap to speak</span>
+          <span class="mic-timer" aria-hidden="true"></span>
+        </button>
+        <div id="result" class="result" role="status" aria-live="polite" hidden></div>
+        <p class="hint">This MVP only knows phrases that a helper has taught it. If it is not sure, it says so.</p>
+      </section>
+
+      <!-- TEACH: for a bilingual helper. They read the ENGLISH phrase and say it in Rohingya. -->
+      <section id="view-teach" role="tabpanel" aria-labelledby="tab-teach" class="view" hidden>
+        <div class="locked card" data-locked>
+          <h2>Helper key needed</h2>
+          <p>Teaching and tests are for helpers. Paste <code>RVB_ADMIN_TOKEN</code> from your <code>.env</code> file.</p>
+          <form class="key-form row">
+            <input type="password" name="key" autocomplete="off" placeholder="Helper key" aria-label="Helper key" required />
+            <button type="submit">Unlock</button>
+          </form>
+        </div>
+        <div data-unlocked hidden>
+          <div class="card row">
+            <label>Speaker label <input id="teach-speaker" class="speaker" value="speaker-1" maxlength="32" /></label>
+            <p class="small">Read the English phrase, then say it in Rohingya. Record <b>3 takes</b> per phrase.</p>
+          </div>
+          <ul id="teach-list" class="phrase-list"></ul>
+        </div>
+      </section>
+
+      <!-- PHRASES & TESTS: record test takes, manage recordings, export for evaluation. -->
+      <section id="view-tests" role="tabpanel" aria-labelledby="tab-tests" class="view" hidden>
+        <div class="locked card" data-locked>
+          <h2>Helper key needed</h2>
+          <p>Unlock on the Teach tab first.</p>
+        </div>
+        <div data-unlocked hidden>
+          <div class="card">
+            <h2>Record a test take</h2>
+            <p class="small">Test takes are only used to measure accuracy. They do not teach the app.</p>
+            <div class="row">
+              <label>Speaker <input id="test-speaker" class="speaker" value="speaker-1" maxlength="32" /></label>
+              <label>Phrase <select id="test-phrase"></select></label>
+              <label id="test-note-wrap" hidden>What you said, in English <input id="test-note" maxlength="200" placeholder="optional" /></label>
+              <button id="test-record" class="rec">● Record test</button>
+            </div>
+            <p id="test-msg" class="msg" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="card">
+            <h2>Recordings</h2>
+            <div class="row">
+              <button id="export" class="secondary">⬇ Download .zip</button>
+              <label>Delete all by speaker <input id="del-speaker" class="speaker" maxlength="32" placeholder="speaker-1" /></label>
+              <button id="del-speaker-btn" class="danger">Delete</button>
+            </div>
+            <p class="small">Recordings are private voice data. They stay on this computer unless you download them.</p>
+            <table class="takes">
+              <thead><tr><th>Phrase</th><th>Kind</th><th>Speaker</th><th>When</th><th></th></tr></thead>
+              <tbody id="takes-body"></tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h2>Add an English phrase</h2>
+            <form id="add-phrase" class="row">
+              <input name="english" maxlength="120" placeholder="English phrase, e.g. Where is the bus stop?" required aria-label="English phrase" />
+              <select name="category" aria-label="Category">
+                <option value="general">general</option>
+                <option value="health">health</option>
+                <option value="legal">legal</option>
+                <option value="emergency">emergency</option>
+              </select>
+              <button type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">Built for WATai × the Welcome Centre · MVP · Voice stays on this computer.</footer>
+    <script>/*SCRIPT*/</script>
+  </body>
+</html>
