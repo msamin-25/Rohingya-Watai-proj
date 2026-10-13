@@ -16,8 +16,8 @@ one computer, for one helper, on `localhost`.
 | Oversized or malformed uploads | Upload limit (default 2 MB), WAV-only decoder, 15 s maximum, sample-rate checks. |
 | Path traversal | Take ids are server-generated 32-hex UUIDs and are validated; the eval tool refuses manifest paths outside the export folder. |
 | Recordings leaking | Stored outside the repo in `RVB_DATA_DIR` (`0700` folder, `0600` files). Audio sent to **Speak** is never stored. `.gitignore` and `make check` block `.env`, `var/`, `*.wav`, `*.m4a`, `*.zip`. No analytics, no external requests; English speech uses the browser's own voice. |
-| Cloud sync | `make_env.py` puts recordings in a folder that iCloud Desktop/Documents and OneDrive do not sync. The macOS venv lives in `.venv.nosync`. |
-| Supply chain | Few dependencies; exact npm versions; `ignore-scripts=true`; `pip-audit` and `npm audit` via `make check` (local, free; no paid CI). |
+| Cloud sync | `make_env.py` puts recordings in a folder that iCloud Desktop/Documents and OneDrive do not sync. On macOS the helper key lives in `.env.nosync` (`.env` is a link to it) and the venv in `.venv.nosync`, which iCloud never uploads. |
+| Supply chain | Few dependencies; exact npm versions; `ignore-scripts=true`; `pip-audit` and `npm audit` via `make check`. |
 
 ## Before using it beyond localhost
 

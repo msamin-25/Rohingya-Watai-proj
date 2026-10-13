@@ -1,7 +1,11 @@
 """Create .env from .env.example with a fresh random helper key and a private data folder.
 
     python scripts/make_env.py           # refuses to overwrite an existing .env
-    python scripts/make_env.py --force   # replace it (old helper key stops working)
+    python scripts/make_env.py --force   # replace it with a new key (the old key stops working)
+
+On macOS the secret is written to .env.nosync and .env is a symlink to it: iCloud Drive does
+not sync files named *.nosync, so the key never leaves this computer even when the project
+lives in an iCloud-synced Desktop or Documents folder.
 """
 
 from __future__ import annotations
@@ -27,8 +31,9 @@ def private_data_dir() -> str:
 
 
 def main() -> int:
-    target = ROOT / ".env"
-    if target.exists() and "--force" not in sys.argv:
+    link = ROOT / ".env"
+    target = ROOT / (".env.nosync" if platform.system() == "Darwin" else ".env")
+    if (link.exists() or link.is_symlink()) and "--force" not in sys.argv:
         print(".env already exists; leaving it alone (use --force to replace it).")
         return 0
     lines = []
@@ -43,7 +48,11 @@ def main() -> int:
         f.write("\n".join(lines) + "\n")
     if os.name != "nt":
         os.chmod(target, 0o600)
-    print(f"Wrote {target} (owner-only). Recordings will be stored in {private_data_dir()}")
+    if target != link:
+        if link.exists() or link.is_symlink():
+            link.unlink()
+        link.symlink_to(target.name)
+    print(f"Wrote {target.name} (owner-only). Recordings will be stored in {private_data_dir()}")
     return 0
 
 

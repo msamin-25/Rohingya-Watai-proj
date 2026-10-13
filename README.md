@@ -9,7 +9,6 @@ A voice-only bridge for Rohingya newcomers in Canada, built by **WATai** with th
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB)
 ![Node](https://img.shields.io/badge/node-20%2B-339933)
 ![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688)
-![Cost](https://img.shields.io/badge/running%20cost-%240-2ea44f)
 ![Status](https://img.shields.io/badge/status-MVP-orange)
 
 </div>
@@ -28,11 +27,10 @@ A voice-only bridge for Rohingya newcomers in Canada, built by **WATai** with th
 8. [Quick start](#quick-start)
 9. [Using the app](#using-the-app)
 10. [Tests and checks](#tests-and-checks)
-11. [Cost: $0](#cost-0)
-12. [Privacy and security](#privacy-and-security)
-13. [Repository layout](#repository-layout)
-14. [Contributing rules](#contributing-rules)
-15. [Roadmap](#roadmap)
+11. [Privacy and security](#privacy-and-security)
+12. [Repository layout](#repository-layout)
+13. [Contributing rules](#contributing-rules)
+14. [Roadmap](#roadmap)
 
 ---
 
@@ -49,8 +47,8 @@ It is **not a general translator yet**, and it is designed to say *"Not sure"* r
 ![Architecture diagram](docs/architecture.svg)
 
 > The diagram is a **draw.io** file: [`docs/architecture.drawio`](docs/architecture.drawio).
-> Open it for free at [app.diagrams.net](https://app.diagrams.net) (*File → Open from → Device*)
-> or in VS Code with the free *Draw.io Integration* extension. `docs/architecture.svg` is the
+> Open it at [app.diagrams.net](https://app.diagrams.net) (*File → Open from → Device*)
+> or in VS Code with the *Draw.io Integration* extension. `docs/architecture.svg` is the
 > same diagram as an image.
 
 | Layer | Where | Job |
@@ -94,10 +92,6 @@ mindmap
       Runs on localhost
       Recordings never uploaded
       Nothing private in git
-    Cost
-      No paid APIs
-      No cloud services
-      Free open-source libraries
 ```
 
 ## How it works
@@ -265,7 +259,7 @@ cd backend; ..\.venv\Scripts\python -m pytest -q
 
 Open **http://localhost:8000**. Use `localhost`, not an IP address, or the browser will block the
 microphone. If port 8000 is busy, use `--port 8001`. To unlock helper features, paste
-`RVB_ADMIN_TOKEN` from `.env` on the **Teach** tab. It's a local password, not a paid key.
+`RVB_ADMIN_TOKEN` from `.env` on the **Teach** tab.
 
 ### VS Code
 
@@ -305,18 +299,7 @@ suggestions with the evidence behind them.
 | Browser | `make e2e` | real Chromium with a fake microphone; no CSP or script errors |
 | **Everything** | `make check` | rebuilds and verifies `frontend/dist`, all tests, no private data in git, `pip-audit` + `npm audit` |
 
-There is **no paid CI**. Run `make check` before every commit or push; it does the same checks
-on your own computer for free.
-
-## Cost: $0
-
-| Part | Cost |
-|---|---|
-| Speech matching, storage, English voice | Runs on your computer; uses the browser's built-in voice |
-| AI / cloud APIs | **None.** No API keys, no external requests (the `llm` extra is intentionally empty) |
-| Libraries | Free and open source (FastAPI, numpy, esbuild, Playwright) |
-| GitHub | Free repository. **No GitHub Actions workflow**, so no CI minutes are used |
-| Helper key (`RVB_ADMIN_TOKEN`) | A random local password, not tied to any account or bill |
+Run `make check` before every commit or push.
 
 ## Privacy and security
 
