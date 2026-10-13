@@ -1,7 +1,7 @@
 # rvb_ai
 
-The ML core of the Rohingya Voice Interpreter. See the [project README](../README.md) and
-[docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
+The ML core of the Rohingya Voice Interpreter. See the
+[architecture section of the project README](../README.md#architecture-at-a-glance).
 
 | Module | Job |
 |---|---|

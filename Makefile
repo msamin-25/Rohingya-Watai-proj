@@ -4,7 +4,7 @@
 PY  ?= .venv/bin/python
 VENV ?= .venv
 
-.PHONY: setup venv install build env test test-ml test-backend test-frontend run eval e2e audit check-dist
+.PHONY: setup venv install build env test test-ml test-backend test-frontend run eval e2e audit check-dist check-private check
 
 setup: venv install build env  ## everything needed to run the app
 
@@ -51,4 +51,10 @@ audit:
 	cd frontend && npm audit
 
 check-dist: build
-	git diff --exit-code -- frontend/dist
+	git diff --exit-code -- frontend/dist || (echo "Commit the rebuilt frontend/dist" && exit 1)
+
+check-private:  ## fail if .env, recordings or zips are tracked by git
+	@! git ls-files | grep -Ei '(^|/)\.env$$|\.(wav|m4a|mp3|ogg|webm|aiff|zip)$$|^var/' || (echo "Private data is tracked by git!" && exit 1)
+	@echo "No private data tracked."
+
+check: check-dist test check-private audit  ## run before every commit / push (free, local CI)

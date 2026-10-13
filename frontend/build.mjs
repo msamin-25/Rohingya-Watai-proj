@@ -1,5 +1,5 @@
 // Bundles src/js/main.js + src/styles.css into ONE self-contained file: dist/index.html.
-// Output is deterministic so CI can check that the committed dist/ is up to date.
+// Output is deterministic so `make check` can verify that the committed dist/ is up to date.
 import { build, transform } from "esbuild";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
