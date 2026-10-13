@@ -369,6 +369,4 @@ Details: **[SECURITY.md](SECURITY.md)**.
 - [ ] Offline / kiosk mode
 - [ ] Consent flow and data-retention policy before any pilot with newcomers
 
-## Acknowledgements
 
-Built by **WATai** in partnership with the **Welcome Centre**, for and with the Rohingya community.
