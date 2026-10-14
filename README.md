@@ -4,7 +4,7 @@
 
 **Speak Rohingya → get English text and English speech.**
 
-A voice-only bridge for Rohingya newcomers in Canada, built by **WATai** with the **Welcome Centre**.
+A voice-only bridge for Rohingya newcomers in Canada**.
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB)
 ![Node](https://img.shields.io/badge/node-20%2B-339933)
